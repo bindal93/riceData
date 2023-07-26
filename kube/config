@@ -1,0 +1,23 @@
+apiVersion: v1
+clusters:
+  - cluster:
+      certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVMVENDQXBXZ0F3SUJBZ0lSQU1nUGJzb2FBQXNiZ0hoQzZaNU1rVlV3RFFZSktvWklodmNOQVFFTEJRQXcKTHpFdE1Dc0dBMVVFQXhNa01URmlNR0psWkRFdE1HSmtaaTAwWWpNeUxUazBaVGd0WkRBNE5HRXlPRFJsTUdZ>
+      server: https://34.68.116.244
+    name: gke_teak-sunup-394007_us-central1-c_cluster-1
+contexts:
+  - context:
+      cluster: gke_teak-sunup-394007_us-central1-c_cluster-1
+      user: gke_teak-sunup-394007_us-central1-c_cluster-1
+    name: gke_teak-sunup-394007_us-central1-c_cluster-1
+current-context: gke_teak-sunup-394007_us-central1-c_cluster-1
+kind: Config
+preferences: {}
+users:
+  - name: gke_teak-sunup-394007_us-central1-c_cluster-1
+    user:
+      exec:
+        apiVersion: client.authentication.k8s.io/v1beta1
+        command: gke-gcloud-auth-plugin
+        installHint: Install gke-gcloud-auth-plugin for use with kubectl by following
+          https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+        provideClusterInfo: true
