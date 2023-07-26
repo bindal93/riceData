@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "teak-sunup-394007",
+  "private_key_id": "d9bf692fd8d0cfe9544e0d46e1a4bf08d060e22d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCbWZy+4bQF7fGx\nUBMF77i+JAeafc5peHnrrxT6ZApnov3/1KLBHuBpLMUSSqQ0YAwYOx+BJDv89w51\nIOhq4BxpmkqmjSYHBew+boJr8i92lYbnESUW1pPAWrMx90Uk1lZS3MAa8vHCq++E\nZkGZE/NWa5PKkEP2PdnozDJrZhl3clXy7YkkEJXVyk88zOTiBmVTF4BLZmFBSPv7\nsT1Ls3jS8bo+lYdG/4dp6CNEILDnoAFS4cG6bzXdnq8jpLSbdDZtCuDJxt31I4CW\n7v5WalW7FQEevwpzDMDhVzc745xf74RG08mlV17aFiL5Q4gkv7ZPrXkGaBdcivwu\nnn6fNDs1AgMBAAECggEAA7ILB4No++cgI76q5S5Br8w9nhA2E8444EFm91nf4X1A\nG5DcWkm4vufAvGGoLFLIlt75LeJFxwu9fU3OGZTBOEXiVrnu2KXsa8PHOHgnZuPB\ntMd0oWlzVFUUBDFEpM6weQIlU77Jv37FkNm538FYvYqLlnr+EuJ/x4jr/iAMpQm6\nwhaE1hdWPLMG4mfVX9NpVldUVqbqZFWoe0gw94/I4NFeZ7eXVWjm75NdZqzya1BS\nL0zpt6eF2TBRO4Kehoeqh/6G8HHwujvjK1wtLKQOPZJ3NogJcCzi7D9mrjenf6SE\n+tZaBjIXIJc03Z2lJILkKWFfeOmph9xCkW49V1BRoQKBgQDMOBKfpPytCyblsdJZ\nzm8X2OcLa5UG5gRaN2y9zfosb3Nw/duWIq2j53bG4GM85Uhxr41E+vPpl73X96AV\neMgxgFitoTLrXzXgSNev7aRzrZo6eKexquzIG1ILlgEXoP96lSCS/g8YYnNQ8Apd\n1cM8tHxIonJVyHzHkirOrW0ISQKBgQDCvW/cbH5tIxpd+jGWyo3AdqGl+biM5DWO\nElHsErN6mKf1VBp84fDzB+T3jzKulqoTZRRHc5QCwVXZ/eZmyaPMfiy1tVLkmXCZ\nCg1dtemzJnzIIIyYn60spCPjn5cHkhsfT50Rc93QyF8Xhm4UcXbdElG58yCKpaj7\nrovdAr9TjQKBgEnTi4gDEQVNnsYyvqSQqECqvPu37KwNw00J9Fm5eNNPhyA15Ygl\nCTjTmHDU9YsyKDpRCHUDc+HiZVMJxel9PIIIsAY03D+Sr9tg+fgzpNvcyoCQ1a64\n59h/Z+2gUMzF+xXJi3kYN0TNcnq0DEtX17i+Vp+7ejHgxJsxECCfOWdhAoGAIN7E\n4NnXRSilrLMsZ51s682aX1+VTQLAH2jsNwK5FLprrzcw+V9RwlPUzAx5q4p2zqtD\nDwRtOUHU8eSvXS4v3bZ2aX1froJPxSUzOFwaREj8yvLjiGd7XYufGy622WpJ9bEE\nfAuopzMLCfeA4SZ9v7b14IMvPPfVXBYMOZPbI4kCgYBIZsZiKewZF95NfgPkdJBw\n31naP9k6EouQvvgGiDggZgWjjMd5nQqB2M7xZ346mznIjIy6vsEPn38GKdetSEGp\nvnl6SnLalcGyGHKsuQs+XgzakU9F1pa4yL42lGFPn24BHJcVNUFQ6LskVMmOsDlQ\nLLeXhkYkXtKqSmdI1sCBKQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "rice-db@teak-sunup-394007.iam.gserviceaccount.com",
+  "client_id": "107007152589028456467",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/rice-db%40teak-sunup-394007.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

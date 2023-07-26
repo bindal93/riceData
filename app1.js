@@ -11,10 +11,19 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// PostgreSQL connection pool configuration
+// //local PostgreSQL connection pool configuration
+// const pool = new Pool({
+//   user: "postgres",
+//   host: "localhost",
+//   database: "rice",
+//   password: "shivam",
+//   port: 5432 // Default PostgreSQL port
+// });
+
+//prod PostgreSQL connection pool configuration
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
+  user: "shivam",
+  host: "34.69.190.106",
   database: "rice",
   password: "shivam",
   port: 5432 // Default PostgreSQL port
