@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: riceData-app-shivam-deployment
+  name: ricedata-app-shivam-deployment
   namespace: kubernetes-cluster-shivam
   labels:
-    app: riceData-shivam
+    app: ricedata-shivam
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: riceData-shivam
+      app: ricedata-shivam
   template:
     metadata:
       labels:
-        app: riceData-shivam
+        app: ricedata-shivam
     spec:
       containers:
-        - name: riceData-shivam
+        - name: ricedata-shivam
           image: nagpshivam/ricedata:latest
           imagePullPolicy: Always
           ports:

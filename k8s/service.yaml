@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: riceData-shivam
+  name: ricedata-shivam
   namespace: kubernetes-cluster-shivam
 spec:
   type: LoadBalancer
   selector:
-    app: riceData-shivam
+    app: ricedata-shivam
   ports:
     - protocol: TCP
       port: 3000

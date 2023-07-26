@@ -1,13 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: "riceData-shivam-ingress"
+  name: "ricedata-shivam-ingress"
   namespace: "kubernetes-cluster-shivam"
 spec:
   tls:
     - secretName: tls-secret
   defaultBackend:
     service:
-      name: "riceData-shivam"
+      name: "ricedata-shivam"
       port:
         number: 3000

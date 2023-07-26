@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: riceData-configmap-shivam
+  name: ricedata-configmap-shivam
   namespace: kubernetes-cluster-shivam
   labels:
-    app: riceData-shivam
+    app: ricedata-shivam
 data:
   ELASTIC_URL: "https://34.16.133.63:9200"
 
@@ -12,10 +12,10 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: riceData-secret-shivam
+  name: ricedata-secret-shivam
   namespace: kubernetes-cluster-shivam
   labels:
-    app: riceData-shivam
+    app: ricedata-shivam
 data:
   ELASTIC_USERNAME: "ZWxhc3RpYw=="
   ELASTIC_PASSWORD: "UT1XSDRUY1lXV2lUcmJ3RlNjZDk="
