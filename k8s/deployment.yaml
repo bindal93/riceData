@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: riceData-shivam
-          image: nagpshivam/riceData:latest
+          image: nagpshivam/ricedata:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000

@@ -15,9 +15,9 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'docker build -t nagpshivam/riceData:latest .'
+        sh 'docker build -t nagpshivam/ricedata:latest .'
         sh 'docker login -u ${dockerUsr} -p ${dockerPwd}'
-        sh 'docker push nagpshivam/riceData:latest'
+        sh 'docker push nagpshivam/ricedata:latest'
       }
     }
     stage('Kubernetes Deployment') {
