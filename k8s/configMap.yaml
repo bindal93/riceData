@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-configmap-shivam
+  namespace: kubernetes-cluster-shivam
+  labels:
+    app: backend-shivam
+data:
+  ELASTIC_URL: "https://34.16.133.63:9200"
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: backend-secret-shivam
+  namespace: kubernetes-cluster-shivam
+  labels:
+    app: backend-shivam
+data:
+  ELASTIC_USERNAME: "ZWxhc3RpYw=="
+  ELASTIC_PASSWORD: "UT1XSDRUY1lXV2lUcmJ3RlNjZDk="
+type: Opaque

@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: tls-secret
+  namespace: kubernetes-cluster-shivam
+spec:
+  secretName: tls-secret
+  commonName: "fir-auth-server-daf0f.web.app"
+  dnsNames:
+    - "fir-auth-server-daf0f.web.app"
+  issuerRef:
+    name: selfsigned-issuer
+    kind: Issuer
+    group: cert-manager.io

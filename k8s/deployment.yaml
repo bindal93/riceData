@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-app-shivam-deployment
+  namespace: kubernetes-cluster-shivam
+  labels:
+    app: backend-shivam
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-shivam
+  template:
+    metadata:
+      labels:
+        app: backend-shivam
+    spec:
+      containers:
+        - name: backend-shivam
+          image: nagpshivam/ecom-backend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+              protocol: TCP
+          env:
+            - name: CORS_ALLOW_ORIGIN
+              value: "*"
+          envFrom:
+            - configMapRef:
+                name: backend-configmap-shivam
+            - secretRef:
+                name: backend-secret-shivam

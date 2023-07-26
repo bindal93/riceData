@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rice Imports</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  </head>
+  <body>
+    <script src="script.js"></script>
+    <div class="container">
+      <h1>Rice Categories</h1>
+      <!-- File Upload Input with Material Design style -->
+      <div class="file-upload">
+        <label for="imageInput" class="file-label">
+          <span class="material-icons">cloud_upload</span> Choose File
+        </label>
+        <input type="file" id="imageInput" accept="image/*" onchange="handleFileSelect()" />
+      </div>
+      <img
+        src="#"
+        alt="Uploaded Image"
+        id="uploadedImage"
+        style="display: none; max-width: 200px"
+      />
+      <table>
+        <tr>
+          <th>Rice Category Name</th>
+          <th>Percentage</th>
+          <th>Action</th>
+        </tr>
+        <% rows.forEach((row, index) => { %>
+        <tr>
+          <td><input type="text" name="category" value="<%= row.category %>" /></td>
+          <td><input type="text" name="percentage" value="<%= row.percentage %>" /></td>
+          <td class="delete-btn" onclick="deleteRow(<%= index %>)">Delete</td>
+        </tr>
+        <% }); %>
+      </table>
+      <!-- "Add Row" button with Material Design style -->
+      <button class="material-button" onclick="addRow()">
+        <span class="material-icons">add</span> Add Row
+      </button>
+      <!-- "Submit" button with Material Design style -->
+      <button class="material-button" onclick="submitData()">
+        <span class="material-icons">send</span> Submit
+      </button>
+      <!-- Error message element -->
+      <p id="error-message" style="color: var(--secondary-color); display: none">
+        Total percentage should be 100
+      </p>
+    </div>
+  </body>
+</html>
