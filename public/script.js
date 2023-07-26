@@ -79,15 +79,18 @@ function submitData() {
 
   fetch("/submit", {
     method: "POST",
-    body: formData,
+    body: formData
   })
     .then((response) => response.json())
     .then((data) => {
       console.log(data); // Display the response from the server
       // Handle the response as needed
+      alert("Uploaded Successfully !");
+      window.location.reload(); // Reload the page after successful upload
     })
     .catch((error) => {
-      console.error("Error:", error);
       // Handle errors, if any
+      console.error("Error:", error);
+      alert("Error:", error);
     });
 }

@@ -13,8 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // PostgreSQL connection pool configuration
 const pool = new Pool({
-  user: "shivam",
-  host: "https://34.69.190.106/",
+  user: "postgres",
+  host: "localhost",
   database: "rice",
   password: "shivam",
   port: 5432 // Default PostgreSQL port
@@ -26,9 +26,9 @@ app.get("/", (req, res) => {
 });
 
 // Endpoint to handle form submission
-app.post("/submit", multer().none(), (req, res) => {
+app.post("/submit", multer().single("image"), async (req, res) => {
   const data = JSON.parse(req.body.data);
-
+  console.log(data);
   // Validate data and calculate total percentage
   let totalPercentage = 0;
   for (const item of data) {
@@ -42,26 +42,20 @@ app.post("/submit", multer().none(), (req, res) => {
     return res.status(400).json({ error: "Total percentage should be 100." });
   }
 
-  // Insert data into the PostgreSQL database
-  const query =
-    "INSERT INTO rice_categories (category_name, percentage, image) VALUES ($1, $2, $3)";
-  const values = data.map((item) => [item.riceCategory, item.percentage, req.file.buffer]);
+  // Insert data and image into the PostgreSQL database
+  const query = "INSERT INTO rice_categories (data, image) VALUES ($1, $2)";
 
-  pool.connect((err, client, done) => {
-    if (err) {
-      return res.status(500).json({ error: "Error connecting to the database." });
-    }
+  try {
+    const client = await pool.connect();
 
-    client.query(query, values, (err) => {
-      done(); // Release the client back to the pool
+    // Insert data and image as a single row in the rice_categories table
+    await client.query(query, [JSON.stringify(data), req.file.buffer]);
 
-      if (err) {
-        return res.status(500).json({ error: "Error inserting data into the database." });
-      }
-
-      res.json({ message: "Data inserted successfully." });
-    });
-  });
+    client.release(); // Release the client back to the pool
+    return res.json({ message: "Data inserted successfully." });
+  } catch (error) {
+    return res.status(500).json({ error: "Error inserting data into the database." });
+  }
 });
 
 // Start the server
