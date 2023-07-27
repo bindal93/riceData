@@ -4,76 +4,68 @@ const cors = require("cors");
 const path = require("path");
 const bodyParser = require("body-parser");
 const multer = require("multer");
-const mongoose = require("mongoose");
+const { Pool } = require("pg");
 app.use(cors());
 // Set up static files and EJS as the view engine
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Parse incoming JSON data
-app.use(bodyParser.json());
+// //local PostgreSQL connection pool configuration
+// const pool = new Pool({
+//   user: "postgres",
+//   host: "localhost",
+//   database: "rice",
+//   password: "shivam",
+//   port: 5432 // Default PostgreSQL port
+// });
 
-// Connect to MongoDB (Make sure MongoDB is running)
-const mongoURI = "mongodb://localhost:27017/rice_categories_db"; // Replace with your MongoDB URI //mongodb://localhost:27017/rice_categories_db
-mongoose.connect(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
-db.once("open", () => {
-  console.log("Connected to MongoDB");
-});
+// //prod PostgreSQL connection pool configuration
+// const pool = new Pool({
+//   user: "shivam",
+//   host: "34.69.190.106",
+//   database: "rice",
+//   password: "shivam",
+//   port: 5432 // Default PostgreSQL port
+// });
 
-// Define a schema and model for the rice categories
-const riceCategorySchema = new mongoose.Schema({
-  riceCategory: String,
-  percentage: Number,
-  image: { data: Buffer, contentType: String }, // Adding a field to store image data
-});
-const RiceCategory = mongoose.model("RiceCategory", riceCategorySchema);
-
-// Set up Multer for handling file uploads
-const storage = multer.memoryStorage(); // Store the uploaded file in memory as Buffer
-const upload = multer({ storage: storage });
-
-// Routes
+// Endpoint to render the index page
 app.get("/", (req, res) => {
   res.render("index", { rows: [] });
 });
 
-// POST route to handle the form submission with image upload
-app.post("/submit", upload.single("image"), (req, res) => {
-  const image = req.file; // This will contain the uploaded image data
-  const data = JSON.parse(req.body.data); // This will contain the JSON data from the client
+// // Endpoint to handle form submission
+// app.post("/submit", multer().single("image"), async (req, res) => {
+//   const data = JSON.parse(req.body.data);
+//   console.log(data);
+//   // Validate data and calculate total percentage
+//   let totalPercentage = 0;
+//   for (const item of data) {
+//     if (isNaN(item.percentage) || item.percentage <= 0) {
+//       return res.status(400).json({ error: "Invalid data. Please enter valid percentage values." });
+//     }
+//     totalPercentage += parseInt(item.percentage, 10);
+//   }
 
-  // Validate the total percentage sum (should be 100)
-  const totalPercentage = data.reduce((sum, item) => sum + item.percentage, 0);
-  if (totalPercentage !== 100) {
-    return res.status(400).json({ error: "Total percentage should be 100" });
-  }
+//   if (totalPercentage !== 100) {
+//     return res.status(400).json({ error: "Total percentage should be 100." });
+//   }
 
-  // Save the rice categories data and the uploaded image to the MongoDB collection
-  const riceCategory = new RiceCategory({
-    riceCategory: data.map((item) => item.riceCategory),
-    percentage: data.map((item) => item.percentage),
-    image: { data: image.buffer, contentType: image.mimetype },
-  });
+//   // Insert data and image into the PostgreSQL database
+//   const query = "INSERT INTO rice_categories (data, image) VALUES ($1, $2)";
 
-  riceCategory.save((err, result) => {
-    if (err) {
-      console.error(err);
-      return res
-        .status(500)
-        .json({ error: "Failed to save data to the database" });
-    }
+//   try {
+//     const client = await pool.connect();
 
-    console.log("Data and Image saved successfully:", result);
-    return res
-      .status(200)
-      .json({ message: "Data and Image saved successfully" });
-  });
-});
+//     // Insert data and image as a single row in the rice_categories table
+//     await client.query(query, [JSON.stringify(data), req.file.buffer]);
+
+//     client.release(); // Release the client back to the pool
+//     return res.json({ message: "Data inserted successfully." });
+//   } catch (error) {
+//     return res.status(500).json({ error: "Error inserting data into the database." });
+//   }
+// });
 
 // Start the server
 const port = 3000;
