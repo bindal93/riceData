@@ -13,22 +13,22 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // //local PostgreSQL connection pool configuration
-const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "rice",
-  password: "shivam",
-  port: 5432 // Default PostgreSQL port
-});
-
-//prod PostgreSQL connection pool configuration
 // const pool = new Pool({
-//   user: "shivam",
-//   host: "34.69.190.106",
+//   user: "postgres",
+//   host: "localhost",
 //   database: "rice",
 //   password: "shivam",
 //   port: 5432 // Default PostgreSQL port
 // });
+
+//prod PostgreSQL connection pool configuration
+const pool = new Pool({
+  user: "shivam",
+  host: "34.69.190.106",
+  database: "rice",
+  password: "shivam",
+  port: 5432 // Default PostgreSQL port
+});
 
 // Endpoint to render the index page
 app.get("/", (req, res) => {
