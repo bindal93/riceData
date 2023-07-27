@@ -1,5 +1,7 @@
-    CREATE TABLE rice_categories (
+CREATE TABLE rice_categories (
     id SERIAL PRIMARY KEY,
     data TEXT,
-    image BYTEA
-    );
+    image BYTEA,
+    filename TEXT,
+    date TIMESTAMP
+);

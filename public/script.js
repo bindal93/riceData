@@ -81,12 +81,16 @@ function submitData() {
     method: "POST",
     body: formData
   })
-    .then((response) => response.json())
     .then((data) => {
       console.log(data); // Display the response from the server
       // Handle the response as needed
-      alert("Uploaded Successfully !");
-      window.location.reload(); // Reload the page after successful upload
+      if (data.status === 200) {
+        alert("Uploaded successfully !");
+        window.location.reload(); // Reload the page after successful upload
+      } else {
+        alert("Failure occured !");
+        window.location.reload(); // Reload the page after successful upload
+      }
     })
     .catch((error) => {
       // Handle errors, if any
