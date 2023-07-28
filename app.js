@@ -112,12 +112,15 @@ app.get("/downloadAll", async (req, res) => {
       const { id, data, image, filename, date } = row;
 
       // Save the image with the specified filename
-      const imageFilePath = path.join(downloadPath, `${filename}.jpg`);
+      console.log("downloadPath ", downloadPath);
+      const updateFilename = filename.replace(/:| /g, "");
+      console.log("updateFilename ", updateFilename);
+      const imageFilePath = path.join(downloadPath, `${updateFilename}.jpg`);
       await fs.promises.writeFile(imageFilePath, image);
 
       // Save the JSON data with the specified filename
       const jsonData = JSON.parse(data);
-      const jsonFilePath = path.join(downloadPath, `${filename}.json`);
+      const jsonFilePath = path.join(downloadPath, `${updateFilename}.json`);
       await fs.promises.writeFile(jsonFilePath, JSON.stringify(jsonData, null, 2));
 
       return id; // Return the ID of the successfully imported row
