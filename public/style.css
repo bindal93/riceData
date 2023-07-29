@@ -10,7 +10,6 @@
 body {
   font-family: "Roboto", sans-serif;
   padding: 0;
-  margin: 0;
 }
 
 h1 {
@@ -167,8 +166,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  margin: 0;
 }
 
 .container {
@@ -179,5 +176,5 @@ body {
   justify-content: center; /* Align content to the top of the container */
   margin-top: 50px;
   margin-bottom: 50px;
-  zoom: 1.75; /* Increase the size of content by 1.75 times */
+  zoom: 2; /* Increase the size of content by 2 times */
 }
