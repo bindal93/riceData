@@ -72,10 +72,11 @@ app.post("/submit", multer().single("image"), async (req, res) => {
     const client = await pool.connect();
 
     // Insert data, image, filename, and date as a single row in the rice_categories table
+    const filename = `${randomNum}_${date}`.replace(/:| /g, "");
     const result = await client.query(query, [
       JSON.stringify(data),
       imageBuffer, // Use the converted image buffer
-      `${randomNum}_${date}`,
+      filename,
       date
     ]);
 
